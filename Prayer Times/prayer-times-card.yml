@@ -1,0 +1,22 @@
+type: glance
+entities:
+  - entity: sensor.fajr
+  - entity: sensor.zuhr
+  - entity: sensor.asr
+  - entity: sensor.maghrib
+  - entity: sensor.isha
+title: East London Mosque
+show_icon: false
+card_mod:
+  style: |
+    :host {
+      --paper-item-icon-color: white;
+    }
+    ha-card {
+      background: #95112d;
+       --primary-text-color: white !important;
+      color: white;
+    }
+grid_options:
+  columns: full
+  rows: auto

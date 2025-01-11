@@ -1,0 +1,66 @@
+type: entities
+title: Dishwasher
+entities:
+  - entity: binary_sensor.dishwasher_door
+    name: Door
+  - type: conditional
+    conditions:
+      - entity: sensor.dishwasher_door
+        state: closed
+    row:
+      entity: sensor.dishwasher_operation_state
+      name: State
+  - type: conditional
+    conditions:
+      - entity: sensor.dishwasher_duration
+        state_not: unavailable
+    row:
+      entity: sensor.dishwasher_duration
+      name: Duration
+  - type: conditional
+    conditions:
+      - entity: sensor.dishwasher_program_progress
+        state_not:
+          - unavailable
+          - "0"
+    row:
+      entity: sensor.dishwasher_program_progress
+      name: Progress
+  - type: conditional
+    conditions:
+      - entity: sensor.dishwasher_remaining_program_time
+        state_not: unavailable
+    row:
+      entity: sensor.dishwasher_remaining_program_time
+      name: Remaining
+  - type: section
+  - entity: switch.dishwasher_power
+    name: Power
+    icon: mdi:power
+  - type: conditional
+    conditions:
+      - entity: switch.dishwasher_power
+        state: "on"
+    row:
+      type: buttons
+      entities:
+        - entity: switch.dishwasher_program_eco50
+          name: "Eco: 50°"
+        - entity: switch.dishwasher_program_auto2
+          name: "Auto: 45°-65°"
+        - entity: switch.dishwasher_program_intensiv70
+          name: "Intensive: 70°"
+        - entity: switch.dishwasher_program_quick65
+          name: "Express: 65°"
+        - entity: switch.dishwasher_program_machinecare
+          name: Machine Care
+        - entity: switch.dishwasher_program_prerinse
+          name: Pre-Rinse
+state_color: true
+card_mod:
+  style: |
+    .card-header {
+      justify-content: center !important;
+      font-size: 18.5px;
+      padding-top: 2px;
+    }

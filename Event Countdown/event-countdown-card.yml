@@ -1,0 +1,36 @@
+type: custom:mushroom-template-card
+entity: calendar.united_kingdom_eng
+primary: >
+  {% set days_until_event =
+  ((as_timestamp(state_attr('calendar.united_kingdom_eng', 'start_time')) -
+  as_timestamp(now())) / 86400) | round(0, 'ceil') %}
+
+  {% if days_until_event == 0 %}
+    Today
+  {% elif days_until_event == 1 %}
+    1 day
+  {% else %}
+    {{ days_until_event }} days
+  {% endif %}
+secondary: "{{ state_attr('calendar.united_kingdom_eng', 'message') }}"
+icon: >
+  {% set start_time = state_attr('calendar.united_kingdom_eng', 'start_time') %}
+
+  {% set days_until_event = ((as_timestamp(start_time) - as_timestamp(now())) /
+  86400) | round(0, 'ceil') %}
+
+  {% if days_until_event == 0 %}
+    mdi:calendar-check
+  {% else %}
+    mdi:calendar
+  {% endif %}
+icon_color: "#ff725c"
+multiline_secondary: true
+hold_action:
+  action: navigate
+  navigation_path: /calendar
+tap_action:
+  action: none
+grid_options:
+  columns: 6
+  rows: auto

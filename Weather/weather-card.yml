@@ -1,0 +1,44 @@
+type: weather-forecast
+entity: weather.weather_com
+name: Weather
+forecast_type: daily
+hold_action:
+  action: url
+  url_path: https://weather.com/en-GB/weather/today
+card_mod:
+  style: |
+    ha-card {
+      border: none;
+      {% if is_state('weather.weather_com', 'clear-night') %}
+        background: midnightblue;
+        color: #fff;
+        --secondary-text-color: #eee;
+      {% elif is_state('weather.weather_com', 'cloudy') %}
+        background: linear-gradient(to top, skyblue, grey);
+        color: #111;
+        --secondary-text-color: #eee;
+      {% elif is_state('weather.weather_com', 'partlycloudy') %}
+        background: linear-gradient(to top, skyblue, lightgrey);
+        color: #111;
+        --secondary-text-color: #fff;
+      {% elif is_state('weather.weather_com', 'rainy') %}
+        background: linear-gradient(to top, #4e6881 50%, grey 90%);
+        color: #fff;
+        --secondary-text-color: #ddd;
+      {% elif is_state('weather.weather_com', 'sunny') %}
+        background: skyblue;
+        color: #444;
+        --secondary-text-color: #fff;
+      {% elif is_state('weather.weather_com', 'snowy') %}
+        background: snow;
+        color: #555;
+        --secondary-text-color: #999;
+      {% elif is_state('weather.weather_com', 'snowy-rainy') %}
+        background: linear-gradient(to top, snow, #4e6881);
+        color: #fff;
+        --secondary-text-color: #222;
+      {% endif %}
+    }
+grid_options:
+  columns: full
+  rows: auto

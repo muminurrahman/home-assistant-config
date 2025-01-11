@@ -1,0 +1,38 @@
+# Request API key from - https://www.londonprayertimes.com/api/, and replace "<API Key>"" in the code below.   
+
+sensor:
+  - platform: rest
+    name: Fajr
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.fajr }}"
+    icon: mdi:clock
+
+  - platform: rest
+    name: Sunrise
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.sunrise }}"
+    icon: mdi:clock
+
+  - platform: rest
+    name: Zuhr
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.dhuhr }}"
+    icon: mdi:clock
+
+  - platform: rest
+    name: Asr
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.asr }}"
+    icon: mdi:clock
+
+  - platform: rest
+    name: Maghrib
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.magrib }}"
+    icon: mdi:clock
+
+  - platform: rest
+    name: Isha
+    resource: https://www.londonprayertimes.com/api/times/?format=json&key=<API Key>&24hours=true
+    value_template: "{{ value_json.isha }}"
+    icon: mdi:clock
