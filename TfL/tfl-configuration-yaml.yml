@@ -1,0 +1,24 @@
+# https://www.home-assistant.io/integrations/london_underground/
+# Example configuration.yaml entry
+sensor:
+  - platform: london_underground
+    line:
+      - Bakerloo
+      - Central
+      - Circle
+      - District
+      - DLR
+      - Elizabeth line
+      - Hammersmith & City
+      - Jubilee
+      - Metropolitan
+      - Northern
+      - Piccadilly
+      - Victoria
+      - Waterloo & City
+      - Liberty
+      - Lioness
+      - Mildmay
+      - Suffragette
+      - Weaver
+      - Windrush

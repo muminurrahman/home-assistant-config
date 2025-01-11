@@ -1,0 +1,135 @@
+type: entity-filter
+entities:
+  - entity: sensor.bakerloo
+    name: Bakerloo
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #b26300; }"
+  - entity: sensor.central
+    name: Central
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #dc241f; }"
+  - entity: sensor.circle
+    name: Circle
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #ffc80a; }"
+  - entity: sensor.district
+    name: District
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #007d32; }"
+  - entity: sensor.dlr
+    name: DLR
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #00afad; }"
+  - entity: sensor.elizabeth_line
+    name: Elizabeth
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #6950a1; }"
+  - entity: sensor.hammersmith_city
+    name: Hammersmith & City
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #f589a6; }"
+  - entity: sensor.jubilee
+    name: Jubilee
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #838d93; }"
+  - entity: sensor.liberty
+    name: Liberty
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #61686b; }"
+  - entity: sensor.lioness
+    name: Lioness
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #ffa600; }"
+  - entity: sensor.metropolitan
+    name: Metropolitan
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #9b0058; }"
+  - entity: sensor.mildmay
+    name: Mildmay
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #006fe6; }"
+  - entity: sensor.northern
+    name: Northern
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #000000; }"
+  - entity: sensor.piccadilly
+    name: Piccadilly
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #0019a8; }"
+  - entity: sensor.suffragette
+    name: Suffragette
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #18a95d; }"
+  - entity: sensor.victoria
+    name: Victoria
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #039be5; }"
+  - entity: sensor.waterloo_city
+    name: Waterloo & City
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #76d0bd; }"
+  - entity: sensor.weaver
+    name: Weaver
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #9b0058; }"
+  - entity: sensor.windrush
+    name: Windrush
+    icon: si:transportforlondon
+    card_mod:
+      style: ":host { --paper-item-icon-color: #ff6347; }"
+  - entity: sensor.windrush
+    type: custom:mushroom-template-card
+    primary: Good service
+    secondary: |
+      {% if 
+        is_state('sensor.bakerloo', 'Good Service') and
+        is_state('sensor.central', 'Good Service') and
+        is_state('sensor.circle', 'Good Service') and
+        is_state('sensor.district', 'Good Service') and
+        is_state('sensor.dlr', 'Good Service') and
+        is_state('sensor.elizabeth_line', 'Good Service') and
+        is_state('sensor.hammersmith_city', 'Good Service') and
+        is_state('sensor.jubilee', 'Good Service') and
+        is_state('sensor.liberty', 'Good Service') and
+        is_state('sensor.lioness', 'Good Service') and
+        is_state('sensor.metropolitan', 'Good Service') and
+        is_state('sensor.mildmay', 'Good Service') and
+        is_state('sensor.northern', 'Good Service') and
+        is_state('sensor.piccadilly', 'Good Service') and
+        is_state('sensor.suffragette', 'Good Service') and
+        is_state('sensor.victoria', 'Good Service') and
+        is_state('sensor.waterloo_city', 'Good Service') and
+        is_state('sensor.weaver', 'Good Service') and
+        is_state('sensor.windrush', 'Good Service') %}
+        All lines
+      {% else %}
+        All other lines
+      {% endif %}
+    tap_action:
+      action: none
+    hold_action:
+      action: url
+      url_path: https://tfl.gov.uk/tube-dlr-overground/status/
+grid_options:
+  columns: full
+conditions:
+  - condition: state
+    state_not: Good Service
