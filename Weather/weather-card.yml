@@ -17,6 +17,11 @@ card_mod:
         background: linear-gradient(to top, skyblue, grey);
         color: #111;
         --secondary-text-color: #eee;
+      {% elif is_state('weather.weather_com', 'fog') %}
+        background: linear-gradient(to left, lightgrey, darkgrey, grey);
+        color: #111;
+        --secondary-text-color: #555;
+        opacity: .9;
       {% elif is_state('weather.weather_com', 'partlycloudy') %}
         background: linear-gradient(to top, skyblue, lightgrey);
         color: #111;
