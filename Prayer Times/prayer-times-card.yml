@@ -9,12 +9,33 @@ title: East London Mosque
 show_icon: false
 card_mod:
   style: |
+    {% set current_time = states('sensor.time') %} 
+        
+    {% if current_time >= states('sensor.isha') %}
+        {% set active_prayer = 5 %}
+    {% elif current_time >= states('sensor.maghrib') %}
+        {% set active_prayer = 4 %}
+    {% elif current_time >= states('sensor.asr') %}
+        {% set active_prayer = 3 %}
+    {% elif current_time >= states('sensor.zuhr') %}
+        {% set active_prayer = 2 %}    
+    {% elif current_time >= states('sensor.fajr') %}
+        {% set active_prayer = 1 %}
+    {% endif %}
+
+    div.entity:nth-child({{ active_prayer }}) {
+      background: var(--divider-color);
+      border-radius: 14px;
+      padding: 4px;
+      margin-top: -4px;
+      margin-bottom: 8px;
+    }
     :host {
       --paper-item-icon-color: white;
     }
     ha-card {
       background: #95112d;
-       --primary-text-color: white !important;
+      --primary-text-color: white !important;
       color: white;
     }
 grid_options:
