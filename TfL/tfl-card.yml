@@ -258,7 +258,7 @@ entities:
       %}
         on all lines
       {% else %}
-        All other lines
+        on all other lines
       {% endif %}
     tap_action:
       action: none
